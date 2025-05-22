@@ -53,22 +53,13 @@ async function transformtest(mpSdk: any, logs: HTMLElement, position: any) {
     console.log("=== gltfcomponent", gltfcomponent);
 
 
-    // Initial position
+    // 6 - Set Transform control position
     transformControlNode.position.set(initial.localPosition.x,initial.localPosition.y-1,initial.localPosition.z);
 
-    // Attach the model to the transform control
+    // 7 - Attach the model to the transform control
     transformControls.inputs.selection = gltfNode;
 
-    // 7 - Add SpyEvent
-    const event = sceneObject.addEventPath(transformControls, 'INTERACTION.DRAG', 'true');
-    const emit = sceneObject.addEmitPath(gltfcomponent, "INTERACTION.CLICK");
-    sceneObject.spyOnEvent({
-        path: emit,
-        onEvent(payload: any) {
-            LOG('ClickSpy', payload);
-        }
-    });
-
+    // 8 - Add button listeners
     smallBtn.addEventListener('click',function(){
         DEBUG("smallbtn",gltfcomponent.inputs.localScale);
         let localScale = gltfcomponent.inputs.localScale;
@@ -89,7 +80,8 @@ async function transformtest(mpSdk: any, logs: HTMLElement, position: any) {
         };
         gltfcomponent.inputs.localScale=scale;
     });
-    sceneObject.bindPath(event, emit);
+
+    // 9 - Start Nodes
     gltfNode.start();
     transformControlNode.start();
 
