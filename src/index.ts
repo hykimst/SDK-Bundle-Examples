@@ -25,9 +25,6 @@ showcase.addEventListener('load', async function () {
   let added = false;
   let position ={x:0,y:0,z:0}
   async function MPTransformTest(SDK: any) {
-    SDK.Camera.pose.subscribe((pose:any)=>{
-      // DEBUG("camera", pose);
-    })
     SDK.Tag.data.subscribe({
       onAdded(index: any, item: any, collection: any) {
         if (!added) {
