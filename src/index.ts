@@ -1,19 +1,30 @@
 import { DEBUG, LOG } from '../utils/logger';
+import {SDK_KEY} from '../private_keys';
 
 const showcase = document.getElementById('showcase') as HTMLIFrameElement;
-const key = 'yxszifc05b1bidcsqfr60806d';
 const smallBtn = document.getElementById("smallBtn");
 const bigBtn = document.getElementById("bigBtn");
 
-// augment window with the MP_SDK property
+// Global Modifying Module
+// Recommended [name].d.ts file
+// https://www.typescriptlang.org/docs/handbook/declaration-files/templates/global-modifying-module-d-ts.html
 declare global {
   interface Window {
     MP_SDK: any;
   }
 }
+
+// Add your SDK Key
+if(!!showcase){
+  const src = showcase.getAttribute('src');
+  const srcWithSDKKey= src+SDK_KEY;
+  showcase.setAttribute('src', srcWithSDKKey);
+}
+
+// When the whole page loads, connect to Matterport SDK
 showcase.addEventListener('load', async function () {
   try {
-    const mpSdk = await showcase.contentWindow.MP_SDK.connect(showcase, key, '3.6');
+    const mpSdk = await showcase.contentWindow.MP_SDK.connect(showcase, SDK_KEY, '3.6');
     transformtest(mpSdk);
   } catch (e) {
     console.error(e);
