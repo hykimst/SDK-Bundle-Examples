@@ -3,7 +3,7 @@ import { DEBUG, LOG } from '../utils/logger';
 const smallBtn = document.getElementById("smallBtn");
 const bigBtn = document.getElementById("bigBtn");
 
-async function transformtest(mpSdk: any, logs: HTMLElement, position: any) {
+async function transformtest(mpSdk: any) {
 
     // 1 - SCENE OBJECT 
     const [sceneObject] = await mpSdk.Scene.createObjects(2);
@@ -13,8 +13,6 @@ async function transformtest(mpSdk: any, logs: HTMLElement, position: any) {
     gltfNode.addComponent("mp.directionalLight", { enabled: true, intensity: 1.5 });
     gltfNode.addComponent("mp.pointLight", { enabled: true, intensity: 1.5, decay: 5 });
     gltfNode.addComponent('mp.ambientLight', { enabled: true, intensity: 3.0 });
-
-    DEBUG("transform", mpSdk, position);
 
     // 3 - Add GLTF Loader properties - https://matterport.github.io/showcase-sdk/sdkbundle_components_gltfloader.html
     const initial = {
