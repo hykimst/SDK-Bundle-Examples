@@ -1,7 +1,6 @@
 {
   "name": "SDK-Bundle-Example-2025",
   "version": "1.0.0",
-  "main": "./src/index.ts",
   "repository": "",
   "author": "Matterport Developer Support Team<support@matterport.com>",
   "license": "MIT",
