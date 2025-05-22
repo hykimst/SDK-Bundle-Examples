@@ -11,20 +11,27 @@
     name="apple-mobile-web-app-status-bar-style"
     content="black-translucent"
   />
+  <style>
+    button{
+      margin:50px;
+      width: 100px;
+      height: 50px;
+    }
+  </style>
 </head>
 <body>
   <iframe
     id="showcase"
-    src="/bundle/showcase.html?m=ykoMtKgn2aw&play=1&qs=1&log=0&applicationKey=yxszifc05b1bidcsqfr60806d"
-    width="800px"
-    height="600px"
+    src="/bundle/showcase.html?m=RzQeGZjRcCs&dh=0&mls=1&play=1&qs=1&log=0&applicationKey=yxszifc05b1bidcsqfr60806d"
+    width="1200px"
+    height="800px"
     frameborder="0"
-    allow="xr-spatial-tracking"
     allowfullscreen>
   </iframe>
   <div id="logs">
+    <button id="smallBtn">small</button>
+    <button id="bigBtn">big</button>
     <h2>Logs</h2>
     <ul id="log-list"></ul>
   </div>
-  <script type="module" src="./src/index.ts"></script>
 </body>
