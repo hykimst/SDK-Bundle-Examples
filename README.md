@@ -1,3 +1,3 @@
-# sdk-bundle-examples
+# Bundle SDK Examples
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/hyk-matterport/sdk-bundle-examples)
+[StackBlitz⚡️](https://stackblitz.com/~/github.com/hyk-matterport/sdk-bundle-examples)
