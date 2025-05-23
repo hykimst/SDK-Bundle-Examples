@@ -4,7 +4,7 @@ let TAGS:any = [];
 
 export async function myOpenTagsAndHover(mpSdk: any, logs: HTMLElement) {
 
-  mpSdk.Tag.openTags.subscribe({
+  const openTagSubscription = await mpSdk.Tag.openTags.subscribe({
     prevState: {
       hovered: null,
       docked: null,
@@ -31,21 +31,23 @@ export async function myOpenTagsAndHover(mpSdk: any, logs: HTMLElement) {
       };
     },
   });
+
+
   // Observe Tags
-  mpSdk.Tag.data.subscribe({
+  const tagSubscription = await mpSdk.Tag.data.subscribe({
     onAdded(index:any, item:any, collection:any) {
       if (item.id === 'test') {
-        LOG('Tag added to the collection', index, item, collection, TAGS);
+        LOG('[MyOpenTagsHover-Tag] onAdded', index, item, collection, TAGS);
       }
     },
     onRemoved(index:any, item:any, collection:any) {
       if (item.id === 'test') {
-        LOG('Tag removed from the collection', index, item, collection);
+        LOG('[MyOpenTagsHover-Tag] onRemoved', index, item, collection);
       }
     },
     onUpdated(index:any, item:any, collection:any) {
       if (item.id === 'test') {
-        LOG('Tag updated in place in the collection', index, item, collection);
+        LOG('[MyOpenTagsHover-Tag] onUpdated', index, item, collection);
       }
     },
     onCollectionUpdated(collection:any) {
@@ -57,7 +59,10 @@ export async function myOpenTagsAndHover(mpSdk: any, logs: HTMLElement) {
           navigation: true,
         });
       }
-      LOG('The full collection of Tags', TAGS);
+      LOG('[MyOpenTagsHover-Tag] onCollectionUpdated', TAGS);
     },
   });
+
+  openTagSubscription.cancel();
+  tagSubscription.cancel();
 }

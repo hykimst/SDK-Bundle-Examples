@@ -1,7 +1,4 @@
 export function LOG(msg: string, ...payload: any) {
-    if (payload === null) {
-      payload = 'no payload';
-    }
     console.log(`%c === ${msg} ===`, 'background:#008000; color:white;', payload);
   }
   export function DEBUG(msg: string, ...payload: any) {
@@ -24,7 +21,7 @@ export function LOG(msg: string, ...payload: any) {
     }
     console.log(
       `%c === CREATE ${element} ===`,
-      'background:#FF0000; color:white;',
+      'background:blue; color:white;',
       payload
     );
     parentNode.insertBefore(node, parentNode.firstChild);
